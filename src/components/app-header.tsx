@@ -86,7 +86,7 @@ export function AppHeader({ onMenuClick }: { onMenuClick?: () => void }) {
         </Link>
         <Avatar className="h-8 w-8">
           <AvatarFallback className="bg-primary/20 text-primary text-xs font-medium">
-            SN
+            AP
           </AvatarFallback>
         </Avatar>
       </div>

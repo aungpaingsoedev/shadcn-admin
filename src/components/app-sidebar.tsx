@@ -120,7 +120,7 @@ export function AppSidebar({ collapsed = false }: { collapsed?: boolean }) {
         <div className="p-2 w-full flex justify-center">
           <Avatar className="h-9 w-9">
             <AvatarFallback className="bg-muted text-foreground text-sm font-medium">
-              SN
+              AP
             </AvatarFallback>
           </Avatar>
         </div>
@@ -262,15 +262,15 @@ export function AppSidebar({ collapsed = false }: { collapsed?: boolean }) {
         >
           <Avatar className="h-9 w-9">
             <AvatarFallback className="bg-primary/20 text-primary text-sm font-medium">
-              SN
+              AP
             </AvatarFallback>
           </Avatar>
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-medium text-foreground">
-              satnaing
+              aungpaingsoe
             </p>
             <p className="truncate text-xs text-muted-foreground flex items-center gap-0.5">
-              satnaingdev@gmail.com
+              aungpaingsoe@example.com
               <ChevronDown className="h-3 w-3 shrink-0" />
             </p>
           </div>

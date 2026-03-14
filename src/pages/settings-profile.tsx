@@ -12,11 +12,11 @@ export function SettingsProfilePage() {
       <CardContent className="space-y-4">
         <div className="grid gap-2">
           <label className="text-sm font-medium">Name</label>
-          <Input placeholder="satnaing" />
+          <Input placeholder="aungpaingsoe" />
         </div>
         <div className="grid gap-2">
           <label className="text-sm font-medium">Email</label>
-          <Input type="email" placeholder="satnaingdev@gmail.com" />
+          <Input type="email" placeholder="aungpaingsoe@example.com" />
         </div>
         <Button>Save changes</Button>
       </CardContent>

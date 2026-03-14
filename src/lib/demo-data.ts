@@ -47,7 +47,7 @@ export const demoCustomers: Customer[] = [
 ]
 
 export const demoUsers: User[] = [
-  { id: 1, name: "Sat Naing", email: "satnaingdev@gmail.com", username: "satnaing", role: "Admin", status: "active" },
+  { id: 1, name: "Aung Paing Soe", email: "aungpaingsoe@example.com", username: "aungpaingsoe", role: "Admin", status: "active" },
   { id: 2, name: "Aung Paing Soe", email: "aung@example.com", username: "aungpaing", role: "Editor", status: "active" },
   { id: 3, name: "Thidar Htun", email: "thidar@example.com", username: "thidar", role: "Viewer", status: "active" },
   { id: 4, name: "Zaw Zaw", email: "zaw@example.com", username: "zawzaw", role: "Editor", status: "inactive" },
