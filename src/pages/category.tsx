@@ -82,7 +82,7 @@ export function CategoryPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-foreground">
+        <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           Categories
         </h1>
         <p className="text-muted-foreground mt-1">
@@ -91,17 +91,17 @@ export function CategoryPage() {
       </div>
 
       <Card>
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
+        <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between space-y-0 pb-4">
           <CardTitle className="flex items-center gap-2">
             <FolderTree className="h-5 w-5" />
             All categories
           </CardTitle>
-          <div className="flex items-center gap-2">
-            <div className="relative">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+            <div className="relative w-full sm:w-64">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 placeholder="Search by name or slug..."
-                className="pl-9 w-64"
+                className="pl-9 w-full sm:w-64"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
@@ -110,7 +110,8 @@ export function CategoryPage() {
           </div>
         </CardHeader>
         <CardContent>
-          <Table>
+          <div className="overflow-x-auto -mx-6 px-6 md:mx-0 md:px-0">
+          <Table className="min-w-[500px]">
             <TableHeader>
               <TableRow>
                 <TableHead>Name</TableHead>
@@ -146,6 +147,7 @@ export function CategoryPage() {
               ))}
             </TableBody>
           </Table>
+          </div>
         </CardContent>
       </Card>
 

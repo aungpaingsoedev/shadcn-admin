@@ -1,4 +1,5 @@
 import * as React from "react"
+import { createPortal } from "react-dom"
 import { cn } from "@/lib/utils"
 
 interface SheetContextValue {
@@ -40,7 +41,9 @@ const SheetTrigger = React.forwardRef<
       type="button"
       className={cn(className)}
       onClick={(e) => {
-        ctx.onOpenChange(!ctx.open)
+        e.preventDefault()
+        e.stopPropagation()
+        ctx.onOpenChange(true)
         onClick?.(e)
       }}
       {...props}
@@ -58,18 +61,23 @@ const SheetContent = React.forwardRef<
   const ctx = React.useContext(SheetContext)
   if (!ctx) return null
   if (!ctx.open) return null
-  return (
+
+  const content = (
     <>
       <div
-        className="fixed inset-0 z-50 bg-black/50"
+        role="presentation"
+        className="fixed inset-0 z-[100] bg-black/50 animate-in fade-in duration-200"
         onClick={() => ctx.onOpenChange(false)}
+        onKeyDown={(e) => e.key === "Escape" && ctx.onOpenChange(false)}
         aria-hidden
       />
       <div
         ref={ref}
         className={cn(
-          "fixed inset-y-0 z-50 flex h-full w-72 flex-col gap-4 border-r bg-background p-6 shadow-lg transition-transform duration-300",
-          side === "left" ? "left-0" : "right-0",
+          "fixed inset-y-0 z-[101] flex h-full w-72 flex-col gap-4 border-r bg-background p-6 shadow-lg transition-transform duration-300 ease-out",
+          side === "left"
+            ? "left-0 animate-in slide-in-from-left duration-300"
+            : "right-0 animate-in slide-in-from-right duration-300",
           className
         )}
         {...props}
@@ -78,6 +86,11 @@ const SheetContent = React.forwardRef<
       </div>
     </>
   )
+
+  if (typeof document !== "undefined") {
+    return createPortal(content, document.body)
+  }
+  return content
 })
 SheetContent.displayName = "SheetContent"
 

@@ -19,25 +19,27 @@ export function AppHeader({ onMenuClick }: { onMenuClick?: () => void }) {
   }, [theme])
 
   return (
-    <header className="sticky top-0 z-40 flex h-14 shrink-0 items-center justify-between gap-3 border-b bg-background/95 px-4 md:pr-6 backdrop-blur supports-[backdrop-filter]:bg-background/60 min-w-0">
+    <header className="sticky top-0 z-40 flex h-14 shrink-0 items-center justify-between gap-2 sm:gap-3 border-b bg-background/95 px-3 sm:px-4 sm:pr-6 backdrop-blur supports-[backdrop-filter]:bg-background/60 min-w-0">
       {/* Left: menu + title + search */}
-      <div className="flex flex-1 items-center gap-3 min-w-0">
+      <div className="flex flex-1 items-center gap-2 sm:gap-3 min-w-0 overflow-hidden">
         <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
           <SheetTrigger
-            className="inline-flex size-10 items-center justify-center rounded-md hover:bg-muted md:hidden"
+            className="inline-flex size-9 sm:size-10 shrink-0 items-center justify-center rounded-md hover:bg-muted sm:hidden"
             aria-label="Open menu"
           >
             <Menu className="h-5 w-5" />
           </SheetTrigger>
-          <SheetContent side="left" className="w-64 p-0">
-            <AppSidebar />
+          <SheetContent side="left" className="w-64 p-0 gap-0 max-w-[85vw] sm:max-w-[280px] flex flex-col h-full bg-card border-border">
+            <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
+              <AppSidebar onNavigateClick={() => setSheetOpen(false)} />
+            </div>
           </SheetContent>
         </Sheet>
         <button
           type="button"
           onClick={onMenuClick}
           className={cn(
-            "hidden md:flex size-9 shrink-0 items-center justify-center rounded-md hover:bg-muted",
+            "hidden sm:flex size-9 shrink-0 items-center justify-center rounded-md hover:bg-muted",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           )}
           aria-label="Toggle sidebar"
@@ -45,7 +47,13 @@ export function AppHeader({ onMenuClick }: { onMenuClick?: () => void }) {
           <Menu className="h-5 w-5" />
         </button>
 
-        <div className="hidden md:flex flex-1 items-center gap-3 min-w-0 max-w-xl">
+        <Link
+          to="/"
+          className="sm:hidden shrink-0 truncate font-semibold text-foreground text-sm transition-opacity hover:opacity-80"
+        >
+          Admin
+        </Link>
+        <div className="hidden sm:flex flex-1 items-center gap-3 min-w-0 max-w-xl">
           <Link
             to="/"
             className="shrink-0 font-semibold text-foreground transition-opacity hover:opacity-80"
@@ -58,7 +66,7 @@ export function AppHeader({ onMenuClick }: { onMenuClick?: () => void }) {
               placeholder="Search"
               className="h-9 w-full border-0 bg-muted/50 pl-9 focus-visible:ring-1"
             />
-            <kbd className="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 select-none items-center gap-0.5 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground sm:inline-flex h-5">
+            <kbd className="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 select-none items-center gap-0.5 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground lg:inline-flex h-5">
               <span className="text-xs">⌘</span>K
             </kbd>
           </div>

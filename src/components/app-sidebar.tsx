@@ -53,7 +53,7 @@ const otherNav = [
 
 const allNav = [...generalNav, ...pagesNav, ...otherNav]
 
-export function AppSidebar({ collapsed = false }: { collapsed?: boolean }) {
+export function AppSidebar({ collapsed = false, onNavigateClick }: { collapsed?: boolean; onNavigateClick?: () => void }) {
   const location = useLocation()
   const [errorsOpen, setErrorsOpen] = useState(false)
   const [authOpen, setAuthOpen] = useState(false)
@@ -75,7 +75,7 @@ export function AppSidebar({ collapsed = false }: { collapsed?: boolean }) {
 
   if (collapsed) {
     return (
-      <aside className="flex h-full w-16 flex-col items-center border-r bg-card/50 dark:bg-card">
+      <aside className="flex h-full min-h-0 w-16 shrink-0 flex-col items-center border-r bg-card/50 dark:bg-card">
         {/* Logo - icon only */}
         <div className="flex h-14 w-full items-center justify-center border-b">
           <Link
@@ -96,6 +96,7 @@ export function AppSidebar({ collapsed = false }: { collapsed?: boolean }) {
               <Link
                 key={hasChildren ? item.title : (item as { href: string }).href}
                 to={href}
+                onClick={onNavigateClick}
                 title={item.title}
                 className={cn(
                   "relative flex h-10 w-10 items-center justify-center rounded-lg transition-colors",
@@ -137,6 +138,7 @@ export function AppSidebar({ collapsed = false }: { collapsed?: boolean }) {
   }) => (
     <Link
       to={item.href}
+      onClick={onNavigateClick}
       className={cn(
         "flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
         active
@@ -158,21 +160,21 @@ export function AppSidebar({ collapsed = false }: { collapsed?: boolean }) {
   )
 
   return (
-    <aside className="flex h-full w-64 flex-col border-r bg-card/50 dark:bg-card">
+    <aside className="flex h-full min-h-0 w-64 flex-col border-r border-border bg-card shrink-0">
       {/* Logo */}
-      <div className="flex h-14 items-center gap-2 border-b px-4">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold text-sm">
+      <div className="flex h-14 shrink-0 items-center gap-2 border-b border-border px-4 min-w-0">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold text-sm">
           S
         </div>
-        <div className="flex flex-col">
-          <span className="font-semibold text-foreground text-sm leading-tight">
+        <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
+          <span className="truncate font-semibold text-foreground text-sm leading-tight">
             Shadcn Admin
           </span>
-          <span className="text-xs text-muted-foreground">Vite + ShadcnUI</span>
+          <span className="truncate text-xs text-muted-foreground">Vite + ShadcnUI</span>
         </div>
       </div>
 
-      <nav className="flex-1 overflow-y-auto p-3 space-y-5">
+      <nav className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-3 space-y-5">
         <div>
           <p className="mb-2 px-3 text-xs font-medium uppercase tracking-wider text-muted-foreground">
             General
@@ -220,6 +222,7 @@ export function AppSidebar({ collapsed = false }: { collapsed?: boolean }) {
                       <Link
                         key={sub.href}
                         to={sub.href}
+                        onClick={onNavigateClick}
                         className={cn(
                           "flex w-full items-center rounded-md px-2 py-1.5 text-sm transition-colors",
                           location.pathname === sub.href
@@ -253,9 +256,9 @@ export function AppSidebar({ collapsed = false }: { collapsed?: boolean }) {
         </div>
       </nav>
 
-      <Separator />
+      <Separator className="shrink-0" />
 
-      <div className="p-3">
+      <div className="shrink-0 p-3">
         <button
           type="button"
           className="flex w-full items-center gap-3 rounded-lg p-2 text-left hover:bg-muted transition-colors"
