@@ -23,7 +23,7 @@ This project provides a clean, scalable, and developer-friendly admin interface 
 
 ## 🖼 Preview
 
-![Dashboard Preview](https://raw.githubusercontent.com/aungpaingsoedev/shadcn-admin/refs/heads/main/shadcn-admin.png)
+![Dashboard Preview](https://raw.githubusercontent.com/aungpaingsoedev/shadcn-admin/refs/heads/main/public/shadcn-admin.png)
 
 ---
 
