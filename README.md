@@ -14,8 +14,8 @@ This project provides a clean, scalable, and developer-friendly admin interface 
 * 🌙 Dark mode dashboard
 * 📊 Analytics cards
 * 📈 Dashboard charts
-* 🧭 Sidebar navigation
-* 📄 Multiple pages
+* 🧭 Sidebar navigation (collapsible) + mobile drawer menu
+* 📄 Multiple pages with CRUD (Create, Edit, Delete) modals
 * 📱 Fully responsive layout
 * 🧩 Reusable components
 
@@ -29,13 +29,15 @@ This project provides a clean, scalable, and developer-friendly admin interface 
 
 ## 🛠 Tech Stack
 
-* React
+* React 19
 * Vite
 * TypeScript
 * TailwindCSS
 * Shadcn UI
 * Lucide Icons
-* Recharts (or similar chart library)
+* Recharts
+* React Router
+* tailwindcss-animate
 
 ---
 
@@ -44,7 +46,7 @@ This project provides a clean, scalable, and developer-friendly admin interface 
 Clone the repository
 
 ```bash
-git clone https://github.com/your-username/shadcn-admin.git
+git clone https://github.com/aungpaingsoedev/shadcn-admin.git
 ```
 
 Go to the project folder
@@ -97,20 +99,21 @@ shadcn-admin
 ├── public
 │
 ├── src
-│   ├── components
-│   │   └── ui
+│   ├── components     # Layout & UI components
+│   │   ├── ui        # Shadcn UI primitives
+│   │   ├── app-sidebar.tsx
+│   │   ├── app-header.tsx
+│   │   ├── dashboard-layout.tsx
+│   │   ├── auth-layout.tsx
+│   │   └── settings-layout.tsx
 │   │
-│   ├── pages
+│   ├── pages         # Route pages
 │   │
-│   ├── layouts
+│   ├── lib           # Utils, demo data, API
 │   │
-│   ├── hooks
-│   │
-│   ├── lib
-│   │
-│   ├── styles
-│   │
-│   └── main.tsx
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── index.css
 │
 ├── index.html
 ├── package.json
@@ -122,36 +125,33 @@ shadcn-admin
 
 ## 📄 Pages
 
-This admin template includes multiple sections:
+This admin template includes:
 
 * Dashboard
 * Chats
 * Users
 * Customers
-* Products
+* Products & Product Detail
 * Category
-* Authentication Pages
-* Error Pages
-* Settings
+* Authentication (Login, Login Simple)
+* Error Pages (400, 404, 500)
+* Settings (Profile, Account, Appearance, Notifications, Display)
 * Help Center
 
 ---
 
 ## 🎨 UI Components
 
-Built using **Shadcn UI components** such as:
+Built using **Shadcn-style components**:
 
-* Button
-* Card
-* Avatar
-* Badge
-* Input
+* Button, Card, Avatar, Badge
+* Input, Label, Checkbox
 * Table
-* Sidebar
 * Dialog
-* Dropdown Menu
+* Sheet (mobile drawer)
+* Separator
 
-All components are easily customizable.
+All components are in `src/components/ui` and are easy to customize.
 
 ---
 
@@ -202,8 +202,7 @@ This project is licensed under the **MIT License**.
 
 **Aung Paing Soe**
 
-GitHub
-https://github.com/aungpaingsoedev
+- [GitHub](https://github.com/aungpaingsoedev)
 
 ---
 
